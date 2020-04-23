@@ -16,6 +16,7 @@ body {
 }
 .container:hover {
   background-color: #1f0101;
+  box-shadow: 5px 10px 10px 5px rgb(10, 10, 10);
 }
 .name {
   display: flex;
@@ -30,9 +31,21 @@ body {
   color: rgb(170, 170, 170);
   margin-left: 1em;
 }
-.summary {
-  color: rgb(170, 170, 170);
-  margin: 1rem;
+.summaryP {
+  color: rgb(100, 100, 100);
+  margin: 1em;
+  font-family: sans-serif;
+  text-align: justify;
+  font-size: medium;
+}
+.summaryTag {
+  display: flex;
+  justify-content: center;
+  color: rgb(122, 73, 73);
+  font-size: medium;
+  font-family: Helvetica, sans-serif;
+  font-weight: 550;
+  background-color: black;
 }
 .divImg {
   display: flex;

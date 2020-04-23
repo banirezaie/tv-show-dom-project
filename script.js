@@ -49,13 +49,14 @@ function makePageForEpisodes(episodeList) {
     let summaryTagP = document.createElement(`p`);
     summaryArticle.appendChild(summaryTagP);
     summaryTagP.setAttribute(`id`, `summaryTag`);
-    summaryTagP.textContent = `SUMMARY:`;
+    summaryTagP.setAttribute(`class`, `summaryTag`);
+    summaryTagP.textContent = `Summary`;
 
     //actual summary inside article
     let summary = document.createElement(`p`);
     summaryArticle.appendChild(summary);
-    summary.setAttribute(`id`, `summary`);
-    summary.setAttribute(`class`, `summary`);
+    summary.setAttribute(`id`, `summaryP`);
+    summary.setAttribute(`class`, `summaryP`);
     summary.textContent = episode.summary.replace(/(<([^>]+)>)/gi, "");
   });
 }
