@@ -1,3 +1,40 @@
+body {
+  margin: 0;
+  background-color: rgb(20, 20, 20);
+}
+
 #root {
-  color: red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.container {
+  background-color: black;
+  width: 25%;
+  margin: 1em;
+  border-radius: 10px;
+}
+.container:hover {
+  background-color: #1f0101;
+}
+.name {
+  display: flex;
+  justify-content: center;
+  color: rgb(122, 73, 73);
+  font-size: x-large;
+  font-family: serif;
+  font-weight: 550;
+  background-color: black;
+}
+.episodeCode {
+  color: rgb(170, 170, 170);
+  margin-left: 1em;
+}
+.summary {
+  color: rgb(170, 170, 170);
+  margin: 1rem;
+}
+.divImg {
+  display: flex;
+  justify-content: center;
 }
