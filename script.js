@@ -2,7 +2,8 @@
 function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
-  search(allEpisodes);
+  search();
+  result();
 }
 
 function makePageForEpisodes(episodeList) {
@@ -133,6 +134,31 @@ function search() {
         element.style.display = "none";
       }
     });
+  });
+}
+
+//result counter
+function result() {
+  let resultDiv = document.createElement(`div`);
+  header.appendChild(resultDiv);
+  resultDiv.setAttribute(`id`, `resultDiv`);
+  resultDiv.setAttribute(`class`, `resultDiv`);
+  let resultParagraph = document.createElement(`p`);
+  resultDiv.appendChild(resultParagraph);
+  resultParagraph.setAttribute(`id`, `result`);
+  resultParagraph.setAttribute(`class`, `result`);
+  let containerDiv = document.getElementsByClassName(`container`);
+  let container = Array.from(containerDiv);
+  let searchBar = document.getElementById(`searchInput`);
+
+  //main function of counting after and before keyup
+  resultParagraph.innerHTML = `${codeCorrection(
+    container.length
+  )} / ${codeCorrection(container.length)}`;
+  searchBar.addEventListener(`keyup`, () => {
+    resultParagraph.innerHTML = `${codeCorrection(
+      container.filter((x) => x.style.display === `block`).length
+    )} / ${codeCorrection(container.length)}`;
   });
 }
 
