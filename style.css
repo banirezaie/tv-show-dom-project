@@ -7,6 +7,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 5em;
 }
 #header {
   display: flex;
@@ -27,7 +28,6 @@ body {
 .container:hover > .name {
   color: rgb(175, 117, 117);
 }
-
 .name {
   color: rgb(122, 73, 73);
   font-size: x-large;
@@ -50,7 +50,6 @@ body {
 .container:hover .summaryP {
   color: rgb(192, 192, 192);
 }
-
 .summaryTag {
   display: flex;
   justify-content: center;
@@ -69,4 +68,51 @@ body {
 }
 .container:hover .divImg {
   transform: scale(1.22);
+}
+#searchForm {
+  position: absolute;
+  top: 3em;
+  transform: translate(-50%, -50%);
+  background: #240101;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+}
+::placeholder {
+  color: rgb(122, 122, 122);
+}
+#searchForm:hover > #searchInput {
+  width: 15em;
+}
+#searchForm:hover > .search-btn {
+  color: #240101;
+}
+.search-btn {
+  text-decoration: none;
+  color: rgb(122, 122, 122);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: small;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #240101;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 13px;
+  transition: 0.4s;
+  line-height: 3em;
+  width: 0;
 }

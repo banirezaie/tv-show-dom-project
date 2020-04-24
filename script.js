@@ -102,34 +102,38 @@ function codeCorrection(x) {
   }
 }
 function search() {
+  //html parts and attributes
   let header = document.getElementById(`header`);
   let form = document.createElement(`form`);
-  form.setAttribute(`id`, `form`);
-  let input = document.createElement(`input`);
+  form.setAttribute(`id`, `searchForm`);
   header.appendChild(form);
+  let input = document.createElement(`input`);
   form.appendChild(input);
-  input.setAttribute(`type`, `search`);
+  input.setAttribute(`type`, `text`);
   input.setAttribute(`id`, `searchInput`);
   input.setAttribute(`class`, `searchInput`);
-  input.setAttribute(`placeholder`, `search...`);
-  input.setAttribute(`title`, `type here`);
+  input.setAttribute(`placeholder`, `Search...`);
+  input.setAttribute(`title`, `Find Your Film Here`);
+  let searchBtn = document.createElement(`a`);
+  form.appendChild(searchBtn);
+  searchBtn.setAttribute(`class`, `search-btn`);
+  searchBtn.setAttribute(`href`, `#`);
+  searchBtn.textContent = `Search...`;
+
+  //search bar functionality
   let searchBar = document.getElementById(`searchInput`);
-  let nameSearch = document.querySelectorAll(`.name`).toLowerCase();
-  let summaryPSearch = document.querySelectorAll(`.summaryP`).toLowerCase();
-  let codeSearch = document.querySelectorAll(`episodeCode`).toLowerCase();
-  // let search =searchBar.value.toLowerCase();
   searchBar.addEventListener(`keyup`, (x) => {
-    let term = x.target.value.toLowerCase();
-    Array.from(nameSearch).forEach((e) => {
-      let title = e.firstElementChild.textContent;
-      if (title.toLocaleLowerCase().indexOf(term) != -1) {
-        e.style.display = `block`;
+    let searchValue = x.target.value.toLowerCase();
+    let searchItems = document.getElementsByClassName(`container`);
+    Array.from(searchItems).forEach((element) => {
+      let title = element.textContent;
+      if (title.toLowerCase().indexOf(searchValue) != -1) {
+        element.style.display = "block";
       } else {
-        e.style.display = `none`;
+        element.style.display = "none";
       }
     });
   });
 }
 
 window.onload = setup;
-
