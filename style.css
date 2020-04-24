@@ -1,9 +1,14 @@
 body {
   margin: 0;
-  background-color: rgb(20, 20, 20);
+  background-color: #252525;
 }
 
 #root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -15,29 +20,36 @@ body {
   border-radius: 10px;
 }
 .container:hover {
-  background-color: #1f0101;
+  background-color: #240101;
   box-shadow: 5px 10px 10px 5px rgb(10, 10, 10);
 }
+.container:hover > .name {
+  color: rgb(175, 117, 117);
+}
+
 .name {
-  display: flex;
-  justify-content: center;
   color: rgb(122, 73, 73);
   font-size: x-large;
   font-family: serif;
   font-weight: 550;
   background-color: black;
+  text-align: center;
 }
 .episodeCode {
   color: rgb(170, 170, 170);
   margin-left: 1em;
 }
 .summaryP {
-  color: rgb(100, 100, 100);
+  color: rgb(122, 122, 122);
   margin: 1em;
   font-family: sans-serif;
   text-align: justify;
   font-size: medium;
 }
+.container:hover .summaryP {
+  color: rgb(192, 192, 192);
+}
+
 .summaryTag {
   display: flex;
   justify-content: center;
@@ -51,3 +63,10 @@ body {
   display: flex;
   justify-content: center;
 }
+.divImg {
+  transition: transform 0.2s;
+}
+.container:hover .divImg {
+  transform: scale(1.22);
+}
+
