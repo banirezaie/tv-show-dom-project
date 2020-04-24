@@ -119,6 +119,7 @@ function search() {
   form.appendChild(searchBtn);
   searchBtn.setAttribute(`class`, `search-btn`);
   searchBtn.setAttribute(`href`, `#`);
+  searchBtn.setAttribute(`title`, `Find Your Film Here`);
   searchBtn.textContent = `Search...`;
 
   //search bar functionality
@@ -147,6 +148,7 @@ function result() {
   resultDiv.appendChild(resultParagraph);
   resultParagraph.setAttribute(`id`, `result`);
   resultParagraph.setAttribute(`class`, `result`);
+  resultDiv.setAttribute(`title`, `Result / Total`);
   let containerDiv = document.getElementsByClassName(`container`);
   let container = Array.from(containerDiv);
   let searchBar = document.getElementById(`searchInput`);
