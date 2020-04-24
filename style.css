@@ -18,6 +18,7 @@ body {
   width: 25%;
   margin: 1em;
   border-radius: 10px;
+  min-width: 305px;
 }
 .container:hover {
   background-color: #240101;
@@ -69,4 +70,3 @@ body {
 .container:hover .divImg {
   transform: scale(1.22);
 }
-
