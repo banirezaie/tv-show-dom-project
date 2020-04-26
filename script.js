@@ -3,7 +3,9 @@ function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
   search();
+  select(allEpisodes);
   result();
+  home();
 }
 
 function makePageForEpisodes(episodeList) {
@@ -11,12 +13,7 @@ function makePageForEpisodes(episodeList) {
   episodeList.forEach((episode) => {
     let eachDiv = document.createElement(`div`);
     let containerDiv = rootElem.appendChild(eachDiv);
-    containerDiv.setAttribute(
-      `id`,
-      `containerS${codeCorrection(episode.season)}E${codeCorrection(
-        episode.number
-      )}`
-    );
+    containerDiv.setAttribute(`id`, `${episode.id}`);
     containerDiv.setAttribute(`class`, `container`);
 
     //take the name of each episode and put it inside containerDiv
@@ -104,7 +101,9 @@ function codeCorrection(x) {
 }
 function search() {
   //html parts and attributes
-  let header = document.getElementById(`header`);
+  // let header = document.getElementById(`header`);
+  //I don't know why it doesn't matter to be, but I'll put this here to come back for it later
+  // console.log(header);
   let form = document.createElement(`form`);
   form.setAttribute(`id`, `searchForm`);
   header.appendChild(form);
@@ -130,7 +129,7 @@ function search() {
     Array.from(searchItems).forEach((element) => {
       let title = element.textContent;
       if (title.toLowerCase().indexOf(searchValue) != -1) {
-        element.style.display = "block";
+        element.style.display = "initial";
       } else {
         element.style.display = "none";
       }
@@ -159,9 +158,51 @@ function result() {
   )} / ${codeCorrection(container.length)}`;
   searchBar.addEventListener(`keyup`, () => {
     resultParagraph.innerHTML = `${codeCorrection(
-      container.filter((x) => x.style.display === `block`).length
+      container.filter((x) => x.style.display === `initial`).length
     )} / ${codeCorrection(container.length)}`;
   });
+}
+
+// select option part
+function select(episode) {
+  let select = document.createElement(`select`);
+  header.appendChild(select);
+  select.setAttribute(`id`, `episodeSelect`);
+  select.setAttribute(`class`, `select`);
+  let firstOption = document.createElement(`option`);
+  select.appendChild(firstOption);
+  firstOption.setAttribute(`value`, `select an option`);
+  firstOption.textContent = `Episode Selector:`;
+  episode.forEach((x) => {
+    let option = document.createElement(`option`);
+    option.setAttribute(`value`, x.id);
+    option.setAttribute(`class`, `option`);
+    select.appendChild(option);
+    option.textContent = `S${codeCorrection(x.season)}E${codeCorrection(
+      x.number
+    )} - ${x.name}`;
+  });
+
+  select.addEventListener(`change`, (e) => {
+    let targetDiv = document.getElementById(`${e.target.value}`);
+    let containerDiv = document.getElementsByClassName("container");
+    container = Array.from(containerDiv);
+    let resultCounter = document.getElementById(`result`);
+    if (select.value === e.target.value) {
+      container.map((x) => (x.style.display = `none`));
+      targetDiv.style.display = `initial`;
+      resultCounter.textContent = `01 / ${codeCorrection(container.length)}`;
+    }
+  });
+}
+
+//to reload the main page:
+function home() {
+  let anchor = document.createElement(`a`);
+  header.appendChild(anchor);
+  anchor.setAttribute(`href`, `/`);
+  anchor.setAttribute(`class`, `button`);
+  anchor.textContent = `..Home`;
 }
 
 window.onload = setup;
