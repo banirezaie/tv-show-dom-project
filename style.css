@@ -10,6 +10,7 @@ body {
   margin-top: 2em;
 }
 #header {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -72,7 +73,7 @@ body {
 }
 #searchForm {
   position: absolute;
-  top: 3em;
+  top: 1.5em;
   margin-top: 1.3em;
   transform: translate(-50%, -50%);
   background: #240101;
@@ -120,8 +121,8 @@ body {
 }
 .result {
   position: absolute;
-  float: left;
   color: rgb(192, 192, 192);
+  z-index: 1;
 }
 #resultDiv {
   background: #330202;
@@ -133,7 +134,7 @@ select {
   -webkit-writing-mode: none;
   -webkit-appearance: none;
   position: absolute;
-  left: 69.5%;
+  right: 10.5%;
   background: #240101;
   color: rgb(192, 192, 192);
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -147,7 +148,9 @@ select {
   outline: 0em;
 }
 .home {
+  position: absolute;
   border: none;
+  display: block;
   background: #3d0202;
   width: 45px;
   height: 45px;
@@ -158,13 +161,20 @@ select {
   font-size: 12px;
   text-decoration: none;
   line-height: 3.59em;
-  position: absolute;
   left: 50%;
-  top: 5.9%;
+  top: 2em;
   transition: 0.2s;
 }
 .home:hover {
   color: white;
   letter-spacing: 2px;
   width: 65px;
+}
+@media (max-width: 871px) {
+  select {
+    top: 5.8em;
+  }
+  #root {
+    margin-top: 3.5em;
+  }
 }
