@@ -12,7 +12,7 @@ body {
 #header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 1em;
 }
 .container {
@@ -124,7 +124,7 @@ body {
   color: rgb(192, 192, 192);
 }
 #resultDiv {
-  background: #240101;
+  background: #330202;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -139,31 +139,31 @@ select {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: italic;
   font-size: 13px;
-  height: 5em;
-  border: 20px solid #240101;
+  height: 2em;
+  border: 0.25em solid #240101;
   border-radius: 3em;
-  cursor: cell;
-  top: 4%;
+  cursor: s-resize;
+  top: 3.5em;
   outline: 0em;
 }
-.button {
+.home {
   border: none;
-  background: #240101;
-  width: 50px;
-  height: 50px;
+  background: #3d0202;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   color: rgb(192, 192, 192);
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: italic;
-  font-size: 13px;
+  font-size: 12px;
   text-decoration: none;
-  line-height: 3.5em;
+  line-height: 3.59em;
   position: absolute;
-  left: 20%;
-  top: 5.5%;
+  left: 50%;
+  top: 5.9%;
   transition: 0.2s;
 }
-.button:hover {
+.home:hover {
   color: white;
   letter-spacing: 2px;
   width: 65px;

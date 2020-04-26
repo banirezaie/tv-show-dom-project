@@ -2,9 +2,9 @@
 function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
-  home();
   search();
   result();
+  home();
   select(allEpisodes);
 }
 
@@ -100,13 +100,9 @@ function codeCorrection(x) {
   }
 }
 function search() {
-  let searchDiv = document.createElement(`div`);
-  searchDiv.setAttribute(`id`, `searchDiv`);
-  searchDiv.setAttribute(`class`, `searchDiv`);
-  header.appendChild(searchDiv);
   let form = document.createElement(`form`);
   form.setAttribute(`id`, `searchForm`);
-  searchDiv.appendChild(form);
+  header.appendChild(form);
   let input = document.createElement(`input`);
   form.appendChild(input);
   input.setAttribute(`type`, `text`);
@@ -139,9 +135,8 @@ function search() {
 
 //counter result
 function result() {
-  let searchDiv = document.getElementById(`searchDiv`);
   let resultDiv = document.createElement(`div`);
-  searchDiv.appendChild(resultDiv);
+  header.appendChild(resultDiv);
   resultDiv.setAttribute(`id`, `resultDiv`);
   resultDiv.setAttribute(`class`, `resultDiv`);
   let resultParagraph = document.createElement(`p`);
@@ -200,13 +195,10 @@ function select(episode) {
 
 //to reload the main page:
 function home() {
-  let homeDiv = document.createElement(`div`);
-  header.appendChild(homeDiv);
-  homeDiv.setAttribute(`class`, `homeDiv`);
   let anchor = document.createElement(`a`);
-  homeDiv.appendChild(anchor);
+  header.appendChild(anchor);
   anchor.setAttribute(`href`, `/`);
-  anchor.setAttribute(`class`, `button`);
+  anchor.setAttribute(`class`, `home`);
   anchor.textContent = `..Home`;
 }
 
