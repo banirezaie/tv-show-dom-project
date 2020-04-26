@@ -177,4 +177,7 @@ select {
   #root {
     margin-top: 3.5em;
   }
+  #searchForm:hover > #searchInput {
+    width: 10em;
+  }
 }
