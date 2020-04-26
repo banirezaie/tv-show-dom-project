@@ -2,10 +2,10 @@
 function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
-  search();
-  select(allEpisodes);
-  result();
   home();
+  search();
+  result();
+  select(allEpisodes);
 }
 
 function makePageForEpisodes(episodeList) {
@@ -100,13 +100,13 @@ function codeCorrection(x) {
   }
 }
 function search() {
-  //html parts and attributes
-  // let header = document.getElementById(`header`);
-  //I don't know why it doesn't matter to be, but I'll put this here to come back for it later
-  // console.log(header);
+  let searchDiv = document.createElement(`div`);
+  searchDiv.setAttribute(`id`, `searchDiv`);
+  searchDiv.setAttribute(`class`, `searchDiv`);
+  header.appendChild(searchDiv);
   let form = document.createElement(`form`);
   form.setAttribute(`id`, `searchForm`);
-  header.appendChild(form);
+  searchDiv.appendChild(form);
   let input = document.createElement(`input`);
   form.appendChild(input);
   input.setAttribute(`type`, `text`);
@@ -137,10 +137,11 @@ function search() {
   });
 }
 
-//result counter
+//counter result
 function result() {
+  let searchDiv = document.getElementById(`searchDiv`);
   let resultDiv = document.createElement(`div`);
-  header.appendChild(resultDiv);
+  searchDiv.appendChild(resultDiv);
   resultDiv.setAttribute(`id`, `resultDiv`);
   resultDiv.setAttribute(`class`, `resultDiv`);
   let resultParagraph = document.createElement(`p`);
@@ -171,6 +172,7 @@ function select(episode) {
   select.setAttribute(`class`, `select`);
   let firstOption = document.createElement(`option`);
   select.appendChild(firstOption);
+  firstOption.setAttribute(`id`, `firstOption`);
   firstOption.setAttribute(`value`, `select an option`);
   firstOption.textContent = `Episode Selector:`;
   episode.forEach((x) => {
@@ -198,8 +200,11 @@ function select(episode) {
 
 //to reload the main page:
 function home() {
+  let homeDiv = document.createElement(`div`);
+  header.appendChild(homeDiv);
+  homeDiv.setAttribute(`class`, `homeDiv`);
   let anchor = document.createElement(`a`);
-  header.appendChild(anchor);
+  homeDiv.appendChild(anchor);
   anchor.setAttribute(`href`, `/`);
   anchor.setAttribute(`class`, `button`);
   anchor.textContent = `..Home`;
