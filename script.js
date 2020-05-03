@@ -137,6 +137,7 @@ function makeShowPage(list) {
     let genreP = paragraph();
     containerDiv.appendChild(genreP);
     genreP.setAttribute(`class`, `episodeCode runtime`);
+    genreP.id = `genre`;
     genreP.textContent = `Genres:  ${show.genres}`;
 
     //to fix positioning
