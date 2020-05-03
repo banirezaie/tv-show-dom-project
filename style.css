@@ -16,29 +16,7 @@ body {
   justify-content: space-evenly;
   margin-top: 1em;
 }
-.container {
-  background-color: black;
-  width: 25%;
-  margin: 1em;
-  border-radius: 10px;
-  min-width: 305px;
-}
 
-.container:hover {
-  background-color: #240101;
-  box-shadow: 5px 10px 10px 5px rgb(10, 10, 10);
-}
-.container:hover > .name {
-  color: rgb(175, 117, 117);
-}
-.name {
-  color: rgb(122, 73, 73);
-  font-size: x-large;
-  font-family: serif;
-  font-weight: 550;
-  background-color: black;
-  text-align: center;
-}
 .episodeCode {
   color: rgb(170, 170, 170);
   margin-left: 1em;
@@ -178,7 +156,41 @@ select {
   letter-spacing: 2px;
   width: 65px;
 }
-@media (max-width: 871px) {
+.runtime {
+  margin-top: 0;
+}
+.rating {
+  margin-bottom: 0;
+}
+.container {
+  background-color: black;
+  width: 25%;
+  margin: 1em;
+  border-radius: 10px;
+  min-width: 305px;
+  position: relative;
+}
+
+.container:hover {
+  background-color: #240101;
+  box-shadow: 5px 10px 10px 5px rgb(10, 10, 10);
+}
+.container:hover > .name {
+  color: rgb(175, 117, 117);
+}
+.name {
+  color: rgb(122, 73, 73);
+  font-size: x-large;
+  font-family: serif;
+  font-weight: 550;
+  background-color: black;
+  text-align: center;
+}
+.features {
+  position: absolute;
+  bottom: 0em;
+}
+@media (max-width: 1400px) {
   #episodeSelect {
     top: 5.9em;
   }
@@ -188,9 +200,6 @@ select {
   #root {
     margin-top: 3.5em;
   }
-  #searchForm:hover > #searchInput {
-    width: 10em;
-  }
 }
 
 @media (max-width: 768px) {
@@ -199,5 +208,8 @@ select {
   }
   #root {
     margin-top: 5em;
+  }
+  #searchForm:hover > #searchInput {
+    width: 10em;
   }
 }

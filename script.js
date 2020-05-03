@@ -6,7 +6,7 @@ function getData(URL) {
     .then((json) => {
       makeShowPage(json);
       selectShow(json);
-      setup(`https://api.tvmaze.com/shows/${json[0].id}/episodes`);
+      // setup(`https://api.tvmaze.com/shows/${json[0].id}/episodes`);
       search();
       result();
       home();
@@ -120,6 +120,26 @@ function makeShowPage(list) {
     containerDiv.appendChild(nameParagraph);
     nameParagraph.setAttribute(`class`, `name`);
     nameParagraph.textContent = `${show.name}`;
+
+    //film rating and runtime
+    let ratingP = paragraph();
+    containerDiv.appendChild(ratingP);
+    ratingP.setAttribute(`class`, `episodeCode rating`);
+    ratingP.textContent = `Average Rate:   ${show.rating.average}`;
+
+    //film runtime
+    let runtimeP = paragraph();
+    containerDiv.appendChild(runtimeP);
+    runtimeP.setAttribute(`class`, `episodeCode runtime`);
+    runtimeP.textContent = `Runtime:  ${show.runtime}`;
+
+    //film's genre
+    let genreP = paragraph();
+    containerDiv.appendChild(genreP);
+    genreP.setAttribute(`class`, `episodeCode runtime`);
+    genreP.textContent = `Genres:  ${show.genres}`;
+
+    //to fix positioning
     let br = document.createElement(`br`);
     let br2 = document.createElement(`br`);
     containerDiv.appendChild(br2);
@@ -155,6 +175,29 @@ function makeShowPage(list) {
     );
     summary.setAttribute(`class`, `summaryP`);
     summary.textContent = show.summary.replace(/(<([^>]+)>)/gi, "");
+
+    //features div
+    let br3 = document.createElement(`br`);
+    let br4 = document.createElement(`br`);
+    let br5 = document.createElement(`br`);
+    containerDiv.appendChild(br3);
+    containerDiv.appendChild(br4);
+    containerDiv.appendChild(br5);
+    let features = document.createElement(`div`);
+    containerDiv.appendChild(features);
+    features.setAttribute(`class`, `features`);
+
+    //film status
+    let statusP = paragraph();
+    features.appendChild(statusP);
+    statusP.setAttribute(`class`, `episodeCode`);
+    statusP.textContent = `runtime:  ${show.status}`;
+
+    //film language
+    let languageP = paragraph();
+    features.appendChild(languageP);
+    languageP.setAttribute(`class`, `episodeCode`);
+    languageP.textContent = `language:  ${show.language}`;
   });
 }
 
@@ -293,7 +336,6 @@ function selectShow(show) {
 
   //changes after select a show on show selector
   select.addEventListener(`change`, (e) => {
-    let targetDiv = document.getElementById(`${e.target.value}`);
     let containerDiv = document.getElementsByClassName("container");
     container = Array.from(containerDiv);
     // let resultCounter = document.getElementById(`result`);
@@ -310,6 +352,10 @@ function home() {
   anchor.setAttribute(`href`, `/`);
   anchor.setAttribute(`class`, `home`);
   anchor.textContent = `..Home`;
+}
+
+function paragraph() {
+  return document.createElement(`p`);
 }
 
 function onLoad() {
