@@ -23,6 +23,7 @@ body {
   border-radius: 10px;
   min-width: 305px;
 }
+
 .container:hover {
   background-color: #240101;
   box-shadow: 5px 10px 10px 5px rgb(10, 10, 10);
@@ -126,15 +127,14 @@ body {
 }
 #resultDiv {
   background: #330202;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 select {
   -webkit-writing-mode: none;
   -webkit-appearance: none;
   position: absolute;
-  right: 10.5%;
   background: #240101;
   color: rgb(192, 192, 192);
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -146,7 +146,15 @@ select {
   cursor: s-resize;
   top: 3.5em;
   outline: 0em;
+  width: 23em;
 }
+#episodeSelect {
+  right: 10.5%;
+}
+#showSelect {
+  left: 10.5%;
+}
+
 .home {
   position: absolute;
   border: none;
@@ -171,13 +179,25 @@ select {
   width: 65px;
 }
 @media (max-width: 871px) {
-  select {
-    top: 5.8em;
+  #episodeSelect {
+    top: 5.9em;
+  }
+  #showSelect {
+    top: 5.9em;
   }
   #root {
     margin-top: 3.5em;
   }
   #searchForm:hover > #searchInput {
     width: 10em;
+  }
+}
+
+@media (max-width: 768px) {
+  #episodeSelect {
+    top: 8em;
+  }
+  #root {
+    margin-top: 5em;
   }
 }
