@@ -15,11 +15,18 @@ body {
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 1em;
+  /* background-color: honeydew; */
+  /* height: 100px; */
+  background-image: linear-gradient(#252525, rgba(0, 0, 0, 0.5), #252525);
 }
 
 .episodeCode {
   color: rgb(170, 170, 170);
   margin-left: 1em;
+}
+.bottomDiv {
+  color: rgb(170, 170, 170);
+  margin: 0em 1em 0.25em 1em;
 }
 .summaryP {
   color: rgb(122, 122, 122);
@@ -39,6 +46,9 @@ body {
   font-family: Helvetica, sans-serif;
   font-weight: 550;
   background-color: black;
+}
+.container:hover .showImg {
+  box-shadow: 0px 0px 20px rgb(138, 78, 78);
 }
 .divImg {
   display: flex;
@@ -155,6 +165,7 @@ select {
   color: white;
   letter-spacing: 2px;
   width: 65px;
+  box-shadow: 0px 0px 15px #856161;
 }
 .runtime {
   margin-top: 0;

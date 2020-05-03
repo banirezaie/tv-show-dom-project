@@ -6,7 +6,7 @@ function getData(URL) {
     .then((json) => {
       makeShowPage(json);
       selectShow(json);
-      // setup(`https://api.tvmaze.com/shows/${json[0].id}/episodes`);
+      setup(`https://api.tvmaze.com/shows/${json[0].id}/episodes`);
       search();
       result();
       home();
@@ -190,14 +190,14 @@ function makeShowPage(list) {
     //film status
     let statusP = paragraph();
     features.appendChild(statusP);
-    statusP.setAttribute(`class`, `episodeCode`);
-    statusP.textContent = `runtime:  ${show.status}`;
+    statusP.setAttribute(`class`, `bottomDiv`);
+    statusP.textContent = `Status:  ${show.status}`;
 
     //film language
     let languageP = paragraph();
     features.appendChild(languageP);
-    languageP.setAttribute(`class`, `episodeCode`);
-    languageP.textContent = `language:  ${show.language}`;
+    languageP.setAttribute(`class`, `bottomDiv`);
+    languageP.textContent = `Language:  ${show.language}`;
   });
 }
 
@@ -331,7 +331,7 @@ function selectShow(show) {
     option.setAttribute(`value`, x.id);
     option.setAttribute(`class`, `option`);
     select.appendChild(option);
-    option.textContent = `${x.name} - Genre: ${x.type}`;
+    option.textContent = `${x.name} - Type: ${x.type}`;
   });
 
   //changes after select a show on show selector
