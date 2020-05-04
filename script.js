@@ -8,8 +8,9 @@ function getData(URL) {
       selectShow(json);
       setup(`https://api.tvmaze.com/shows/${json[0].id}/episodes`);
       search();
-      result();
+      // result();
       home();
+      updateResult();
     });
 }
 
@@ -28,7 +29,8 @@ function makeEpisodePage(list) {
     let eachDiv = document.createElement(`div`);
     let containerDiv = rootElem.appendChild(eachDiv);
     containerDiv.setAttribute(`id`, `${episode.id}`);
-    containerDiv.setAttribute(`class`, `container`);
+    containerDiv.setAttribute(`class`, `container episode`);
+    containerDiv.setAttribute(`style`, `display: initial;`);
 
     //take the name of each episode and put it inside containerDiv
     let nameParagraph = document.createElement(`p`);
@@ -113,7 +115,17 @@ function makeShowPage(list) {
     let eachDiv = document.createElement(`div`);
     let containerDiv = rootElem.appendChild(eachDiv);
     containerDiv.setAttribute(`id`, `${show.id}`);
-    containerDiv.setAttribute(`class`, `container`);
+    containerDiv.setAttribute(`class`, `container show`);
+    containerDiv.setAttribute(`style`, `display: initial;`);
+
+    //jump to episodes
+    containerDiv.addEventListener(`click`, () => {
+      let containerDiv = document.getElementsByClassName("container");
+      container = Array.from(containerDiv);
+      container.map((x) => (x.style.display = `none`));
+      setup(`https://api.tvmaze.com/shows/${show.id}/episodes`);
+      updateResult();
+    });
 
     //take the name of each show and put it inside containerDiv
     let nameParagraph = document.createElement(`p`);
@@ -235,13 +247,15 @@ function search() {
     let searchItems = document.getElementsByClassName(`container`);
     Array.from(searchItems).forEach((element) => {
       let title = element.textContent;
-      if (title.toLowerCase().indexOf(searchValue) != -1) {
+      let appearsOnText = title.toLowerCase().indexOf(searchValue) != -1;
+      if (appearsOnText && element.className === `container episode`) {
         element.style.display = "initial";
       } else {
         element.style.display = "none";
       }
     });
   });
+  result();
 }
 
 //counter result
@@ -268,6 +282,23 @@ function result() {
       container.filter((x) => x.style.display === `initial`).length
     )} / ${codeCorrection(container.length)}`;
   });
+}
+
+//for up date result out of searchbar
+function updateResult() {
+  setTimeout(function () {
+    let containerDiv = document.getElementsByClassName(`container`);
+    let container = Array.from(containerDiv);
+    let resultParagraph = document.getElementById(`result`);
+    // console.log(container.filter((x) => x.style.display != `none`));
+    // console.log(container);
+    resultParagraph.innerHTML = `${codeCorrection(
+      container.filter((x) => x.style.cssText === `display: initial;`).length
+    )} / ${codeCorrection(
+      container.filter((x) => x.style.cssText !== `display: none;`).length
+    )}`;
+    // console.log(container.filter((x) => x.style.cssText === `display: initial;`));
+  }, 400);
 }
 
 // select option part
@@ -298,7 +329,8 @@ function selectEpisode(episode) {
     let resultCounter = document.getElementById(`result`);
     container.map((x) => (x.style.display = `none`));
     targetDiv.style.display = `initial`;
-    resultCounter.textContent = `01 / ${codeCorrection(container.length)}`;
+    // resultCounter.textContent = `01 / ${codeCorrection(container.length)}`;
+    updateResult();
   });
 }
 
@@ -336,13 +368,12 @@ function selectShow(show) {
   });
 
   //changes after select a show on show selector
-  select.addEventListener(`change`, (e) => {
+  select.addEventListener(`change`, () => {
     let containerDiv = document.getElementsByClassName("container");
     container = Array.from(containerDiv);
-    // let resultCounter = document.getElementById(`result`);
     container.map((x) => (x.style.display = `none`));
     setup(`https://api.tvmaze.com/shows/${select.value}/episodes`);
-    // resultCounter.textContent = `01 / ${codeCorrection(container.length)}`;
+    updateResult();
   });
 }
 
@@ -355,6 +386,7 @@ function home() {
   anchor.textContent = `..Home`;
 }
 
+// make paragraphs
 function paragraph() {
   return document.createElement(`p`);
 }
