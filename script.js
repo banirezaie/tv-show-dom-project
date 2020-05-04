@@ -6,7 +6,7 @@ function getData(URL) {
     .then((json) => {
       makeShowPage(json);
       selectShow(json);
-      setup(`https://api.tvmaze.com/shows/${json[0].id}/episodes`);
+      // setup(`https://api.tvmaze.com/shows/${json[0].id}/episodes`);
       search();
       // result();
       home();
