@@ -6,11 +6,11 @@ function getData(URL) {
     .then((json) => {
       makeShowPage(json);
       selectShow(json);
-      // setup(`https://api.tvmaze.com/shows/${json[0].id}/episodes`);
       search();
-      // result();
+      result();
       home();
       updateResult();
+      selectEpisode(json);
     });
 }
 
@@ -255,7 +255,7 @@ function search() {
       }
     });
   });
-  result();
+  // result();
 }
 
 //counter result
@@ -326,10 +326,8 @@ function selectEpisode(episode) {
     let targetDiv = document.getElementById(`${e.target.value}`);
     let containerDiv = document.getElementsByClassName("container");
     container = Array.from(containerDiv);
-    let resultCounter = document.getElementById(`result`);
     container.map((x) => (x.style.display = `none`));
     targetDiv.style.display = `initial`;
-    // resultCounter.textContent = `01 / ${codeCorrection(container.length)}`;
     updateResult();
   });
 }
