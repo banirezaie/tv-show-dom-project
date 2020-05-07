@@ -245,11 +245,36 @@ function search() {
   searchBar.addEventListener(`keyup`, (x) => {
     let searchValue = x.target.value.toLowerCase();
     let searchItems = document.getElementsByClassName(`container`);
+
     Array.from(searchItems).forEach((element) => {
       let title = element.textContent;
+
       let appearsOnText = title.toLowerCase().indexOf(searchValue) != -1;
-      if (appearsOnText && element.className === `container episode`) {
+      console.log();
+      // console.log(element.className === `container episode`);
+      if (
+        appearsOnText &&
+        element.className === `container show` &&
+        (element.className === `container episode`) === false
+      ) {
         element.style.display = "initial";
+      } else if (
+        appearsOnText &&
+        ((element.className === `container show`) === true).length +
+          ((element.className === `container show`) === false).length >
+          ((element.className === `container show`) === true).length
+        // &&  (element.className === `container episode`) === true
+      ) {
+        // if (
+        //   appearsOnText &&
+        //   element.className === `container show` &&
+        //   (element.className === `container episode`) === true
+        // ) {
+        //   element.style.display = "initial";
+        // } else {
+        //   element.style.display = "none";
+        // }
+        console.log(element.className === `container episode`);
       } else {
         element.style.display = "none";
       }
