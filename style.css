@@ -1,3 +1,237 @@
+body {
+  margin: 0;
+  background-color: #252525;
+}
+
 #root {
-  color: red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2em;
+}
+#header {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 1em;
+  background-image: linear-gradient(#252525, rgba(0, 0, 0, 0.5), #252525);
+}
+#myAudio {
+  position: absolute;
+  left: 0;
+  caret-color: #252525;
+}
+.episodeCode {
+  color: rgb(170, 170, 170);
+  margin-left: 1em;
+  font-size: 0.75em;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-bottom: 1.5em;
+}
+#genre {
+  font-family: monospace;
+  font-size: medium;
+}
+.bottomDiv {
+  color: rgb(170, 170, 170);
+  margin: 0em 1em 0.25em 1em;
+  color: rgb(170, 170, 170);
+  font-size: 0.75em;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.summaryP {
+  color: rgb(122, 122, 122);
+  margin: 1em;
+  font-family: sans-serif;
+  text-align: justify;
+  font-size: small;
+}
+.container:hover .summaryP {
+  color: rgb(160, 160, 160);
+}
+.summaryTag {
+  display: flex;
+  justify-content: center;
+  color: rgb(122, 73, 73);
+  font-size: medium;
+  font-family: Helvetica, sans-serif;
+  font-weight: 550;
+  background-color: black;
+}
+.divImg {
+  display: flex;
+  justify-content: center;
+}
+.divImg {
+  transition: transform 0.2s;
+}
+.container:hover .divImg {
+  transform: scale(1.22);
+}
+#searchForm {
+  position: absolute;
+  top: 1.5em;
+  margin-top: 1.3em;
+  transform: translate(-50%, -50%);
+  background: #240101;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+}
+::placeholder {
+  color: rgb(122, 122, 122);
+}
+#searchForm:hover > #searchInput {
+  width: 15em;
+}
+#searchForm:hover > .search-btn {
+  color: #240101;
+}
+.search-btn {
+  text-decoration: none;
+  color: rgb(122, 122, 122);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: small;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #240101;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 13px;
+  transition: 0.4s;
+  line-height: 3em;
+  width: 0;
+}
+.result {
+  position: absolute;
+  color: rgb(192, 192, 192);
+  z-index: 1;
+}
+#resultDiv {
+  background: #330202;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+select {
+  -webkit-writing-mode: none;
+  -webkit-appearance: none;
+  position: absolute;
+  background: #240101;
+  color: rgb(192, 192, 192);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 13px;
+  height: 2em;
+  border: 0.25em solid #240101;
+  border-radius: 3em;
+  cursor: s-resize;
+  top: 3.5em;
+  outline: 0em;
+  width: 23em;
+}
+#episodeSelect {
+  right: 10.5%;
+}
+#showSelect {
+  left: 10.5%;
+}
+
+.home {
+  position: absolute;
+  border: none;
+  display: block;
+  background: #3d0202;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: rgb(192, 192, 192);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 12px;
+  text-decoration: none;
+  line-height: 3.59em;
+  left: 50%;
+  top: 2em;
+  transition: 0.2s;
+}
+.home:hover {
+  color: white;
+  letter-spacing: 2px;
+  width: 65px;
+  box-shadow: 0px 0px 15px #856161;
+}
+.runtime {
+  margin-top: 0;
+}
+.rating {
+  margin-bottom: 0;
+}
+.container {
+  background-color: black;
+  width: 25%;
+  margin: 1em;
+  border-radius: 10px;
+  min-width: 305px;
+  position: relative;
+}
+
+.container:hover {
+  background-color: #240101;
+  box-shadow: 5px 10px 10px 5px rgb(10, 10, 10);
+}
+.container:hover > .name {
+  color: rgb(175, 117, 117);
+}
+.name {
+  color: rgb(122, 73, 73);
+  font-size: large;
+  font-family: serif;
+  font-weight: 550;
+  background-color: black;
+  text-align: center;
+}
+.features {
+  position: absolute;
+  bottom: 0em;
+}
+@media (max-width: 1400px) {
+  #episodeSelect {
+    top: 5.9em;
+  }
+  #showSelect {
+    top: 5.9em;
+  }
+  #root {
+    margin-top: 3.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  #episodeSelect {
+    top: 8em;
+  }
+  #root {
+    margin-top: 5em;
+  }
+  #searchForm:hover > #searchInput {
+    width: 10em;
+  }
 }
