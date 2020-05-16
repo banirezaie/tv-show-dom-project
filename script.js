@@ -121,8 +121,12 @@ function makeShowPage(list) {
     //jump to episodes
     containerDiv.addEventListener(`click`, () => {
       let containerDiv = document.getElementsByClassName("container");
-      container = Array.from(containerDiv);
-      container.map((x) => (x.style.display = `none`));
+      let container = Array.from(containerDiv);
+      console.log(container);
+      container.map((x) => {
+        x.style.display = `none`;
+        // console.log(x);
+      });
       setup(`https://api.tvmaze.com/shows/${show.id}/episodes`);
       updateResult();
     });
